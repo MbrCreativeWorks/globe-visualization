@@ -9,7 +9,7 @@ import "./App.css";
 import kisiLogo from "./img/kisi-logo.png";
 import unlockIcon from "./img/unlock-icon.svg";
 
-const socket = io("http://localhost:4000", {
+const socket = io("wss://unlocks-data-server.glitch.me", {
   transports: ["websocket", "polling"]
 });
 function App() {
