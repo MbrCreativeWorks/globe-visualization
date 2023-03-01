@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #f3f2f3;
+}
+
+/* Hide scrollbar for Chrome */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
