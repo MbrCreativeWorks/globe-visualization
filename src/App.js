@@ -103,6 +103,9 @@ function App() {
     });
     setHex(HEX_DATA);
   }, []);
+  useEffect(() => {
+    console.log('Unlocks Data From Server', unlocksData)
+  })
   //changing globe pointofview every selectedcountry changes
   useEffect(() => {
     const countryLocation = {
