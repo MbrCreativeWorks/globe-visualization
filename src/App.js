@@ -104,6 +104,7 @@ function App() {
     setHex(HEX_DATA);
   }, []);
   useEffect(() => {
+    //just checking the received data
     console.log('Unlocks Data From Server', unlocksData)
   })
   //changing globe pointofview every selectedcountry changes
