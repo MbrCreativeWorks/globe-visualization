@@ -1,3 +1,9 @@
+/* leaflet map styles */
+.leaflet-container {
+  height: 560px;
+  width: 100%;
+}
+
 .app_main_holder {
   max-width: 1440px;
   margin: auto;
@@ -11,6 +17,15 @@
   font-weight: bold;
   margin-bottom: 20px;
 
+}
+
+.map_countrie_holder {
+  display: flex;
+}
+
+.top_country_box {
+  width: 360px;
+  margin-left: 20px;
 }
 
 .sub_heading_text {
@@ -44,6 +59,7 @@
   font-weight: normal;
   margin-left: 10px;
   text-align: left;
+  margin-bottom: 6px;
 }
 
 .globe_main_holder {
@@ -61,6 +77,12 @@
 
 .globe_details_holder {
   padding: 25px 20px;
+
+}
+
+.globe_details_subholder {
+  height: 65vh;
+  overflow: auto;
 }
 
 .sider_details_box {
@@ -131,8 +153,18 @@
     max-width: unset !important;
   }
 
+  .top_country_box {
+    width: unset;
+    margin: unset;
+    margin-bottom: 20px;
+  }
+
+  .map_countrie_holder {
+    flex-direction: column-reverse;
+  }
+
   .layout_sider_content {
-    flex-direction: column !important;
+    flex-direction: column-reverse !important;
     height: unset;
   }
 
