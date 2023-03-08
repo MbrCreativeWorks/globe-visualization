@@ -15,7 +15,7 @@ const markerIcon = new L.Icon({
   iconSize: [25, 25],
   iconAnchor: [10, 20]
 })
-const socket = io("http://localhost:4000", {
+const socket = io("wss://unlocks-data-server.glitch.me", {
   transports: ["websocket", "polling"]
 });
 let newData = [];
@@ -24,7 +24,7 @@ function App() {
   const mapRef = useRef();
   const [unlocksData, setUnlocksData] = useState([]);
   const [marksOnMap, setMarksOnMap] = useState([]);
-  const [topsOnMap, setTopsOnMap] = useState([]);
+  // const [topsOnMap, setTopsOnMap] = useState([]);
   const [topCountries, setTopCountries] = useState([]);
 
 
@@ -165,7 +165,7 @@ function App() {
                     <article className="sider_header_text">
                       Top States / Count
                     </article>
-                    {topCountries.length == 0 ? 'Analyzing Data...' : topCountries.slice(0, 3).map((country, key) => {
+                    {topCountries.length === 0 ? 'Analyzing Data...' : topCountries.slice(0, 3).map((country, key) => {
                       return <article key={key} className="sider_details_text">
                         {country.km} / {country.count}
                       </article>
