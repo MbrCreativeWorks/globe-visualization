@@ -15,7 +15,7 @@ const markerIcon = new L.Icon({
   iconSize: [25, 25],
   iconAnchor: [10, 20]
 })
-const socket = io("wss://unlocks-data-server.glitch.me", {
+const socket = io("http://localhost:4000", {
   transports: ["websocket", "polling"]
 });
 let newData = [];
@@ -26,10 +26,6 @@ function App() {
   const [marksOnMap, setMarksOnMap] = useState([]);
   const [topsOnMap, setTopsOnMap] = useState([]);
   const [topCountries, setTopCountries] = useState([]);
-  const [position, setPosition] = useState({
-    lat: 23.8504,
-    lng: 78.7500,
-  });
 
 
   useEffect(() => {
@@ -51,7 +47,7 @@ function App() {
     let tempTopsArray = unlocksData.filter((item) => {
       return (Math.abs(item.created_time - time) / 1000 <= 60)
     });
-    setTopsOnMap(tempTopsArray)
+    // setTopsOnMap(tempTopsArray)
     newData = tempTopsArray;
 
   }, [unlocksData])
@@ -126,8 +122,6 @@ function App() {
               <div className="globe_details_subholder">
                 {
                   unlocksData.map((item, key) => {
-                    let lat = item.location.lat;
-                    let lng = item.location.lng;
                     return <article className="sider_details_text" key={key}>{item.location.state_name}, {item.location.admin_name}, {item.created_at} </article>
                   })
                 }
@@ -147,8 +141,8 @@ function App() {
                 <div className="map_countrie_holder">
                   {/* map element which displays all the unlocked places */}
                   <MapContainer center={{
-                    lat: position.lat,
-                    lng: position.lng,
+                    lat: 23.8504,
+                    lng: 78.7500,
                   }} zoom={4} scrollWheelZoom={true} ref={mapRef}>
                     <TileLayer
                       url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=WlZsDGgEyr9sKXvvdqUW"
@@ -171,11 +165,11 @@ function App() {
                     <article className="sider_header_text">
                       Top States / Count
                     </article>
-                    {topCountries.length != 0 ? topCountries.slice(0, 3).map((country, key) => {
+                    {topCountries.length == 0 ? 'Analyzing Data...' : topCountries.slice(0, 3).map((country, key) => {
                       return <article key={key} className="sider_details_text">
                         {country.km} / {country.count}
                       </article>
-                    }) : 'Analyzing Data...'}
+                    })}
                   </div>
                 </div>
 
